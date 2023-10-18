@@ -4,7 +4,25 @@ using EF;
 
 var db = new NorthwindContex();
 
-foreach (var category in db.Categories.Where(x => x.Id > 5))
+//CreateCategory(db);
+
+foreach (var entity in db.Categories)
 {
-    Console.WriteLine(category);
+    Console.WriteLine(entity);
+}
+
+
+
+static void CreateCategory(NorthwindContex db)
+{
+    var category = new Category
+    {
+        Id = 101,
+        Name = "flksdflæsfj",
+        Description = "dfsdfdfs"
+    };
+
+    db.Add(category);
+
+    db.SaveChanges();
 }
